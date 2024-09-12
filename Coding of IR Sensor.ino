@@ -1,23 +1,21 @@
+const int ProxSensor=2;
+const int LedOutput=13;
+
 void setup()
 {
-  pinMode(13,OUTPUT);
-  pinMode(3,INPUT);
+  pinMode(LedOutput, OUTPUT);
+  pinMode(ProxSensor, INPUT);
   Serial.begin(9600);
 }
 void loop()
 {
-  if (digitalRead(3)== LOW)
+  if (digitalRead(ProxSensor)==HIGH)
   {
-    digitalWrite(13,HIGH);
-    
-    delay(10);
+    digitalWrite(LedOutput, HIGH);
   }
   else 
   {
-    
-    digitalWrite(13,LOW);
-    delay(10);
-    
+    digitalWrite(LedOutput, LOW);
   }
-  
+  delay(10);
 }
