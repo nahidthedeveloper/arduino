@@ -8,26 +8,13 @@ void setup() {
   pinMode(6,OUTPUT);
   pinMode(7,OUTPUT);
   pinMode(8,OUTPUT);
-
-  pinMode(9,INPUT_PULLUP);
-  pinMode(10,INPUT_PULLUP);
 }
 
 void loop() {
-  if(!digitalRead(9)&digitalRead(10)&!state){
     num++; 
+    delay(1000); 
+  if(num>9)num=0;
   
-    if(num>9)num=9;
-    state=1;}
-    if(digitalRead(9)&!digitalRead(10)&!state){
-    num--; 
-  
-    if(num<0)num=0;
-    state=1;}
-  if(digitalRead(9)&digitalRead(10))state=0;   
-
-
-
 switch(num){
   case 0:
   digitalWrite(2,LOW);
@@ -120,6 +107,4 @@ switch(num){
   digitalWrite(8,LOW);
   break;
   }
-
-
 }
