@@ -1,32 +1,30 @@
-//Youtube|Tech at Home
+const int trig=7;
+const int echo=6;
 
-int trig=7;
-int echo=6;
+long duration;
 
-long timeInMicro;
-
-long distanceInCm;
+int distance;
 
 void setup() 
 {
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
   Serial.begin(9600);
-  pinMode(7,OUTPUT);
-  pinMode(6,INPUT);
 }
 
 void loop()  
 {
- digitalWrite(trig,LOW);
+ digitalWrite(trig, LOW);
  delayMicroseconds(2);
- digitalWrite(trig,HIGH);
+  
+ digitalWrite(trig, HIGH);
  delayMicroseconds(10);
- digitalWrite(trig,LOW);
+ digitalWrite(trig, LOW);
 
- timeInMicro= pulseIn(echo,HIGH);
+ duration= pulseIn(echo, HIGH);
 
- distanceInCm = ((timeInMicro/29)/2);
+ distance = duration*0.034/2;
 
- Serial.println(distanceInCm);
- delay(100);
- 
+ Serial.print("Distance: ");
+ Serial.println(distance);
 }
